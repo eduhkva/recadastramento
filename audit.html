@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fila de Espera - Auditório</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .guiche {
+      background-color: #d9d9d9;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5em;
+      color: #333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .guiche h2 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+
+    .senha {
+      font-weight: bold;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+
+    <h1>Fila de Espera</h1>
+  <div class="container" id="guiches">
+    <!-- Guichês serão gerados dinamicamente -->
+  </div>
+
+  <script>
+    // Dados iniciais das senhas por guichê
+    const senhas = {
+      "01": "001",
+      "02": "002",
+      "03": "003",
+      "04": "004",
+      "05": "005",
+      "06": "006",
+      "07": "007",
+      "08": "008",
+    };
+
+    const container = document.getElementById('guiches');
+
+    // Renderizar os guichês na página
+    Object.keys(senhas).forEach((guiche) => {
+      const div = document.createElement('div');
+      div.className = 'guiche';
+      div.innerHTML = `
+        <h2>Guichê ${guiche}</h2>
+        <div class="senha" id="senha-${guiche}">${senhas[guiche]}</div>
+      `;
+      container.appendChild(div);
+    });
+
+    // Conexão WebSocket ou Long Polling pode ser adicionado aqui
+  </script>
+</body>
+</html>
